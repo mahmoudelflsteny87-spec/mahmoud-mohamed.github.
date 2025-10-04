@@ -56,7 +56,7 @@
         }
         .service-item i {
             font-size: 45px;
-            color: #4CAF50; /* لون الأيقونة */
+            color: #4CAF50;
             margin-bottom: 5px;
             transition: transform 0.3s;
         }
@@ -70,20 +70,50 @@
         }
         
         /* ---------------------------------- */
-        /* تصميم بطاقة المحتوى الرئيسية */
+        /* تصميم بطاقة المحتوى الرئيسية (الكارد الأزرق) */
         /* ---------------------------------- */
         .portfolio-card {
             background-color: #1d2532;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             padding: 40px;
             text-align: center;
             max-width: 500px;
             width: 90%;
             margin-top: 50px;
             position: relative;
-            /* التظليل الأخضر الموجود في تصميمك الأصلي */
+            /* التظليل الخارجي */
             box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.4), 0 10px 30px rgba(0, 0, 0, 0.5);
+            /* لمنع تكرار الخلفية الأصلية */
+            overflow: hidden; 
+        }
+
+        /* إضافة أيقونات البرمجة الشفافة للخلفية باستخدام ::before */
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* مسارات صور الأيقونات - تأكد من أن هذا المسار صحيح */
+            background-image: url('images/python.png'), url('images/kali.png'), url('images/code.png');
+            background-repeat: no-repeat;
+            /* تحديد مواقع الأيقونات */
+            background-position: top 20px left 20px, bottom 20px right 20px, center 50% ; 
+            /* تحديد أحجام الأيقونات */
+            background-size: 70px, 60px, 80px; 
+            /* ضبط الشفافية - يمكنك تغيير القيمة (0.05 خفيف جداً، 0.15 متوسط) */
+            opacity: 0.12; 
+            pointer-events: none;
+            z-index: 0; /* تأكد أنها في الخلفية */
+            /* جعل الخلفية أغمق قليلاً من الكارد */
+            background-color: rgba(0, 0, 0, 0.05); 
+        }
+
+        /* لضمان ظهور المحتوى فوق الخلفية الشفافة بوضوح */
+        .portfolio-card > * {
+            position: relative;
+            z-index: 1; 
         }
         
         .profile-photo {
@@ -140,7 +170,7 @@
 
     <div class="social-top-icons">
         <a href="https://www.instagram.com/yourusername" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/yourusername" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://https://www.facebook.com/mahmoud6445/photos" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
         <a href="https://wa.me/201112105322" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
 
@@ -159,7 +189,7 @@
 
     <div class="portfolio-card">
 
-        <img src="mahmoud.jpg" alt="mahmoud.jpg" class="profile-photo">
+        <img src="profile.jpg" alt="صورة الملف الشخصي" class="profile-photo">
 
         <h1>محمود محمد</h1>
         <h2>خبير برمجة وحلول أمن سيبراني متخصص في مكافحة الابتزاز الإلكتروني</h2>
