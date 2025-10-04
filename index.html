@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محمود محمد - مطور ويب</title>
+    <title>محمود محمد - مطور وحلول سيبرانية</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* التنسيقات العامة */
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #f4f7f9;
-            color: #333;
+            /* 1. التعديل هنا: خلفية زرقاء غامقة جداً */
+            background-color: #0A192F; 
+            color: #CCD6F6; /* لون نص فاتح ليظهر على الخلفية الداكنة */
             margin: 0;
             padding: 0;
             display: flex;
@@ -20,31 +21,32 @@
         }
         /* تنسيق بطاقة الموقع الرئيسية */
         .portfolio-card {
-            background-color: #fff;
+            /* تم تغيير الخلفية لتكون أفتح قليلاً من الخلفية الرئيسية أو بيضاء مع ظل بارز */
+            background-color: #112240; 
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* ظل أقوى وأغمق */
             max-width: 450px;
             text-align: center;
-            direction: rtl; /* لضمان دعم اللغة العربية */
+            direction: rtl;
         }
         /* تنسيق الصورة الشخصية */
         .profile-pic {
             width: 150px;
             height: 150px;
-            border-radius: 50%; /* لجعلها دائرية */
+            border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #007BFF; /* إطار أزرق حول الصورة */
+            border: 4px solid #64FFDA; /* لون أزرق فاتح / سماوي جذاب */
             margin-bottom: 20px;
         }
         /* تنسيق العنوان والنبذة */
         h1 {
-            color: #1e3b5e;
+            color: #CCD6F6; /* أبيض مائل للرمادي */
             margin-bottom: 5px;
             font-size: 28px;
         }
         h2 {
-            color: #007BFF;
+            color: #64FFDA; /* لون سماوي لتمييز المسمى */
             font-weight: 400;
             margin-top: 0;
             margin-bottom: 25px;
@@ -52,13 +54,13 @@
         }
         p {
             line-height: 1.8;
-            color: #555;
+            color: #8892B0; /* رمادي فاتح مناسب للقراءة */
             margin-bottom: 30px;
         }
-        /* تنسيق زر الواتساب */
+        /* تنسيق زر الواتساب (لم يتغير ليبقى أخضر) */
         .whatsapp-button {
             display: inline-block;
-            background-color: #25D366; /* لون واتساب الأخضر */
+            background-color: #25D366; 
             color: #fff;
             padding: 12px 30px;
             border-radius: 8px;
@@ -71,7 +73,6 @@
         .whatsapp-button:hover {
             background-color: #128C7E;
         }
-        /* تنسيق أيقونة الواتساب (يمكن استخدام صورة بدلاً من النص إذا أردت) */
         .whatsapp-icon {
             margin-left: 8px;
             font-size: 20px;
@@ -82,16 +83,17 @@
 
 <div class="portfolio-card">
     
-    <img src="https://via.placeholder.com/150/007BFF/FFFFFF?text=صورة محمود" alt="صورة محمود محمد الشخصية - مطور ويب يعمل على اللابتوب" class="profile-pic">
+    <img src="https://via.placeholder.com/150/007BFF/FFFFFF?text=صورة محمود" alt="صورة محمود محمد الشخصية - مطور وحلول أمنية" class="profile-pic">
 
     <h1>محمود محمد</h1>
     
-    <h2>مُطور ويب متخصص في بناء الحلول الرقمية</h2>
+    <h2>خبير برمجة وحلول أمن سيبراني متخصص في مكافحة الابتزاز الإلكتروني</h2>
 
     <p>
-        أمتلك شغفاً عميقاً بالبرمجة وتطوير الويب، مع تركيز خاص على بناء واجهات المستخدم التفاعلية (Front-end) 
-        باستخدام **JavaScript** و **React**. أسعى دائماً لتقديم حلول تقنية مبتكرة 
-        تجمع بين الأداء القوي والتصميم الجذاب، مدفوعاً بحب التعلم المستمر.
+        أقدم حلولاً برمجية متكاملة (باستخدام **JavaScript** وتقنيات الويب الحديثة) 
+        مع خبرة عميقة في **الأمن السيبراني**. أنا متخصص في مساعدة الأفراد 
+        والشركات على **حل مشاكل الابتزاز الإلكتروني** واستعادة البيانات 
+        وتأمين الحسابات ضد الاختراق. هدفنا هو الأمان الرقمي الكامل.
     </p>
 
     <a 
