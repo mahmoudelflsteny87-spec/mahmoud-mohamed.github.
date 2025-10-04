@@ -18,6 +18,31 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            position: relative; /* ضروري لوضع الخلفية الأيقونات كطبقة شفافة */
+            overflow-x: hidden; /* لمنع ظهور شريط تمرير أفقي */
+        }
+        
+        /* ---------------------------------- */
+        /* إضافة أيقونات البرمجة الشفافة للخلفية على كامل الصفحة (BODY) */
+        /* ---------------------------------- */
+        body::before {
+            content: '';
+            position: fixed; /* لتثبيت الأيقونات عند التمرير */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* مسارات صور الأيقونات - تأكد من أن هذا المسار صحيح */
+            background-image: url('images/python.png'), url('images/kali.png'), url('images/code.png');
+            background-repeat: repeat; /* تكرار الأيقونات لملء الشاشة */
+            /* تحديد مواضع الأيقونات (لأنها ستتكرر) */
+            background-position: 0 0; 
+            /* حجم الأيقونات */
+            background-size: 150px, 150px, 150px; 
+            /* ضبط الشفافية - قيمة منخفضة جداً لتكون كعلامة مائية */
+            opacity: 0.04; 
+            pointer-events: none;
+            z-index: -1; /* لجعلها خلف كل المحتوى */
         }
 
         /* ---------------------------------- */
@@ -28,6 +53,8 @@
             padding-top: 35px;
             font-size: 28px;
             margin-bottom: 20px;
+            position: relative; /* للتأكد من أنها فوق الخلفية */
+            z-index: 1;
         }
         .social-top-icons a {
             color: #ffffff;
@@ -36,7 +63,7 @@
             transition: color 0.3s;
         }
         .social-top-icons a:hover {
-            color: #4CAF50; /* لون التفاعل الأخضر */
+            color: #4CAF50;
         }
         
         /* ---------------------------------- */
@@ -49,6 +76,8 @@
             max-width: 800px;
             margin: 30px auto -30px auto;
             color: #fff;
+            position: relative; 
+            z-index: 1;
         }
         .service-item {
             text-align: center;
@@ -81,41 +110,11 @@
             width: 90%;
             margin-top: 50px;
             position: relative;
+            z-index: 1; /* للتأكد من أنه فوق الخلفية */
             /* التظليل الخارجي */
             box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.4), 0 10px 30px rgba(0, 0, 0, 0.5);
-            /* لمنع تكرار الخلفية الأصلية */
-            overflow: hidden; 
         }
 
-        /* إضافة أيقونات البرمجة الشفافة للخلفية باستخدام ::before */
-        .portfolio-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* مسارات صور الأيقونات - تأكد من أن هذا المسار صحيح */
-            background-image: url('images/python.png'), url('images/kali.png'), url('images/code.png');
-            background-repeat: no-repeat;
-            /* تحديد مواقع الأيقونات */
-            background-position: top 20px left 20px, bottom 20px right 20px, center 50% ; 
-            /* تحديد أحجام الأيقونات */
-            background-size: 70px, 60px, 80px; 
-            /* ضبط الشفافية - يمكنك تغيير القيمة (0.05 خفيف جداً، 1 متوسط) */
-            opacity: 0.12; 
-            pointer-events: none;
-            z-index: 0; /* تأكد أنها في الخلفية */
-            /* جعل الخلفية أغمق افتح من الكارد */
-            background-color: rgba(0, 0, 0, 0.05); 
-        }
-
-        /* لضمان ظهور المحتوى فوق الخلفية الشفافة بوضوح */
-        .portfolio-card > * {
-            position: relative;
-            z-index: 1; 
-        }
-        
         .profile-photo {
             width: 150px;
             height: 150px;
@@ -170,7 +169,7 @@
 
     <div class="social-top-icons">
         <a href="https://www.instagram.com/yourusername" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://https://www.facebook.com/mahmoud6445/photos" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.facebook.com/yourusername" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
         <a href="https://wa.me/201112105322" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
 
@@ -189,7 +188,7 @@
 
     <div class="portfolio-card">
 
-        <img src="mahmoud.jpg" alt="mahmoud.jpg" class="profile-photo">
+        <img src="profile.jpg" alt="صورة الملف الشخصي" class="profile-photo">
 
         <h1>محمود محمد</h1>
         <h2>خبير برمجة وحلول أمن سيبراني متخصص في مكافحة الابتزاز الإلكتروني</h2>
