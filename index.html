@@ -1,206 +1,180 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محمود محمد - مطور وحامي مواقع</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
+    <title>حماية وتوعية ضد الاختراق - موقعك</title>
     <style>
+        /* تعريف الألوان الأساسية والتأثيرات */
+        :root {
+            --red-glow: #ff0033; /* أحمر ساطع */
+            --black-bg: #1a1a1a; /* أسود داكن */
+            --text-color: #ffffff; /* لون النص الأساسي أبيض */
+        }
+
+        /* تنسيق الجسم العام للموقع */
         body {
-            /* خلفية داكنة متناسقة مع الصور */
-            background-color: #121820;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            position: relative; /* ضروري لوضع الخلفية الأيقونات كطبقة شفافة */
-            overflow-x: hidden; /* لمنع ظهور شريط تمرير أفقي */
-        }
-        
-        /* ---------------------------------- */
-        /* إضافة أيقونات البرمجة الشفافة للخلفية على كامل الصفحة (BODY) */
-        /* ---------------------------------- */
-        body::before {
-            content: '';
-            position: fixed; /* لتثبيت الأيقونات عند التمرير */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* مسارات صور الأيقونات - تأكد من أن هذا المسار صحيح */
-            background-image: url('images/kali.png'), url('images/kali.png'), url('images/code.png');
-            background-repeat: repeat; /* تكرار الأيقونات لملء الشاشة */
-            /* تحديد مواضع الأيقونات (لأنها ستتكرر) */
-            background-position: 0 0; 
-            /* حجم الأيقونات */
-            background-size: 150px, 150px, 150px; 
-            /* ضبط الشفافية - قيمة منخفضة جداً لتكون كعلامة مائية */
-            opacity: 0.04; 
-            pointer-events: none;
-            z-index: -1; /* لجعلها خلف كل المحتوى */
-        }
-
-        /* ---------------------------------- */
-        /* تصميم أيقونات مواقع التواصل العلوية */
-        /* ---------------------------------- */
-        .social-top-icons {
-            text-align: center;
-            padding-top: 35px;
-            font-size: 28px;
-            margin-bottom: 20px;
-            position: relative; /* للتأكد من أنها فوق الخلفية */
-            z-index: 1;
-        }
-        .social-top-icons a {
-            color: #ffffff;
-            margin: 0 15px;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .social-top-icons a:hover {
-            color: #4CAF50;
-        }
-        
-        /* ---------------------------------- */
-        /* تصميم قسم الخدمات (يمين ويسار) */
-        /* ---------------------------------- */
-        .services-bar {
-            display: flex;
-            justify-content: space-between;
-            width: 90%;
-            max-width: 800px;
-            margin: 30px auto -30px auto;
-            color: #fff;
-            position: relative; 
-            z-index: 1;
-        }
-        .service-item {
-            text-align: center;
-            width: 40%; 
-        }
-        .service-item i {
-            font-size: 45px;
-            color: #4CAF50;
-            margin-bottom: 5px;
-            transition: transform 0.3s;
-        }
-        .service-item i:hover {
-            transform: scale(1.1);
-        }
-        .service-item p {
-            font-size: 15px;
-            margin: 5px 0 0 0;
-            color: #ccc;
-        }
-        
-        /* ---------------------------------- */
-        /* تصميم بطاقة المحتوى الرئيسية (الكارد الأزرق) */
-        /* ---------------------------------- */
-        .portfolio-card {
-            background-color: #1d2532;
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            margin-top: 50px;
-            position: relative;
-            z-index: 1; /* للتأكد من أنه فوق الخلفية */
-            /* التظليل الخارجي */
-            box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.4), 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .profile-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 25px;
-            border: 4px solid #4CAF50;
-        }
-        
-        h1 {
-            color: #ffffff;
-            margin: 0 0 5px 0;
-            font-size: 28px;
-        }
-        
-        h2 {
-            color: #4CAF50;
-            margin: 0 0 25px 0;
-            font-size: 18px;
-        }
-        
-        p {
+            font-family: 'Arial', sans-serif;
+            color: var(--text-color);
+            background-color: var(--black-bg);
             line-height: 1.6;
-            font-size: 16px;
-            color: #e0e0e0;
+            overflow-x: hidden; /* لمنع شريط التمرير الأفقي */
+        }
+
+        /* تنسيق تقسيم الشاشة - النمط الأساسي */
+        .split-container {
+            display: flex;
+            height: 100vh; /* ارتفاع كامل الشاشة */
+        }
+
+        /* النصف الأحمر */
+        .split-left {
+            width: 50%;
+            background-color: var(--red-glow);
+            color: var(--black-bg); /* نص أسود على الخلفية الحمراء */
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto; /* لتمكين التمرير إذا كان المحتوى طويلاً */
+            /* تأثير التوهج */
+            box-shadow: 0 0 50px var(--red-glow), 0 0 20px var(--red-glow) inset;
+        }
+
+        /* النصف الأسود */
+        .split-right {
+            width: 50%;
+            background-color: var(--black-bg);
+            color: var(--text-color);
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        /* تنسيق العناوين */
+        h1, h2, h3 {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
         }
         
-        .whatsapp-button {
-            display: inline-block;
-            background-color: #25D366;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
+        /* تنسيق روابط التواصل الاجتماعي */
+        .contact-link {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #333;
+            color: var(--text-color);
             text-decoration: none;
-            margin-top: 30px;
+            border-radius: 5px;
+            transition: background 0.3s;
+            text-align: center;
+        }
+        .contact-link:hover {
+            background: var(--red-glow);
+            color: var(--black-bg);
+        }
+
+        /* تنسيق الأزرار (يمكن استخدامها للتنقل أو الإجراءات) */
+        .btn {
+            background-color: var(--red-glow);
+            color: var(--black-bg);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
             font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #ff3366;
+        }
+
+        /* تنسيق الروابط داخل النصف الأسود */
+        .split-right a {
+            color: var(--red-glow);
+            text-decoration: none;
+        }
+        .split-right a:hover {
+            text-decoration: underline;
         }
         
-        .whatsapp-button:hover {
-            background-color: #128C7E;
-            transform: translateY(-2px);
-        }
-        
-        .whatsapp-icon {
-            margin-left: 8px;
-            font-size: 20px;
+        /* استجابة الشاشة الصغيرة - العرض على شكل مكدس */
+        @media (max-width: 768px) {
+            .split-container {
+                flex-direction: column;
+                height: auto;
+            }
+            .split-left, .split-right {
+                width: 100%;
+                height: auto;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="social-top-icons">
-        <a href="https://www.instagram.com/yourusername" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/mahmoud6445" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://wa.me/201112105322" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    </div>
-
-    <div class="services-bar">
+    <div class="split-container">
         
-        <div class="service-item">
-            <i class="fas fa-shield-alt"></i>
-            <p>حماية مواقعك من الهجمات الخطيرة</p>
+        <div class="split-left">
+            <h1 style="color: var(--black-bg);">👋 عني - مؤسس الموقع</h1>
+            <p>مرحباً! أنا [**اسمك**]، مطور ومهتم بأمن المعلومات. أنشأت هذا الموقع لنشر الوعي بأهمية **الأمن السيبراني** وتقديم إرشادات عملية لمساعدة الأفراد على حماية أنفسهم وبياناتهم من التهديدات والاختراقات الإلكترونية المتزايدة.</p>
+            <p>هدفنا هو تمكينك بالمعرفة اللازمة لتصبح أكثر أماناً على الإنترنت.</p>
+
+            <hr style="border-color: var(--black-bg);">
+
+            <h2>📱 تواصل معي</h2>
+            
+            <a href="https://wa.me/XXXXXXXXXX" target="_blank" class="contact-link" style="background: #25D366;">🟢 واتساب (WhatsApp)</a>
+            <a href="https://www.facebook.com/YOUR_FACEBOOK_ID" target="_blank" class="contact-link" style="background: #1877F2;">🔵 فيسبوك (Facebook)</a>
+            <a href="mailto:your.email@example.com" target="_blank" class="contact-link">📧 بريد إلكتروني</a>
+
         </div>
 
-        <div class="service-item">
-            <i class="fas fa-laptop-code"></i>
-            <p>مطور تطبيقات</p>
+        <div class="split-right">
+            <h1>🛡️ دليل الأمان السيبراني</h1>
+            <p>استكشف أقسام الموقع لتتعلم كل ما يتعلق بالحماية من الهكرز.</p>
+
+            <hr>
+
+            <section id="what-is-hacker">
+                <h2>🔎 ما معنى كلمة "هكر"؟ (Hacker)</h2>
+                <p>كلمة **"هاكر"** تشير بشكل عام إلى شخص لديه مهارات عالية في الحاسوب والبرمجة ويمكنه استكشاف نقاط الضعف في الأنظمة. تنقسم هذه الكلمة إلى عدة أنواع، أبرزها:</p>
+                <ul>
+                    <li>**الهاكر الأخلاقي (White Hat):** يستخدم مهاراته لاكتشاف الثغرات وإبلاغ أصحابها لإصلاحها، وهو مفيد.</li>
+                    <li>**الهاكر المخترق (Black Hat):** يستخدم مهاراته لأغراض ضارة وغير قانونية (سرقة، تدمير، ابتزاز).</li>
+                </ul>
+                <p>في سياقنا، نعني غالباً الهاكر المخترق.</p>
+            </section>
+            
+            <hr>
+
+            <section id="how-they-hack">
+                <h2>🦹 كيف يعمل الهكر عملية الاختراق؟</h2>
+                <p>الاختراق عملية تتم عبر عدة مراحل، تختلف حسب الهدف ونوع النظام. تتضمن المراحل الشائعة ما يلي:</p>
+                <ol>
+                    <li>**الاستطلاع وجمع المعلومات:** تحديد الهدف، جمع بيانات عنه (مثل: عناوين البريد، نوع النظام، نقاط الضعف المحتملة).</li>
+                    <li>**المسح والبحث عن الثغرات:** استخدام أدوات لفحص النظام بحثاً عن أي ضعف برمجي أو خطأ في الإعدادات.</li>
+                    <li>**الوصول الفعلي (Exploitation):** استغلال الثغرة المكتشفة للدخول إلى النظام (مثلاً: إرسال بريد تصيد، استغلال ضعف في تطبيق ويب).</li>
+                    <li>**المحافظة على الوصول (Persistence):** ترك "باب خلفي" أو تثبيت برنامج يضمن استمرار الوصول حتى بعد إعادة تشغيل النظام.</li>
+                    <li>**تغطية الآثار:** محاولة إخفاء الأدلة لتجنب الكشف.</li>
+                </ol>
+            </section>
+
+            <hr>
+
+            <section id="self-protection">
+                <h2>✅ كيف تحمي نفسك من الهكر؟</h2>
+                <p>الحماية تبدأ باتخاذ إجراءات وقائية بسيطة لكنها فعالة. **تأمين نفسك من الهكر** يتلخص في الآتي:</p>
+                <ul>
+                    <li>**كلمات مرور قوية ومختلفة:** استخدم كلمات مرور معقدة وفريدة لكل موقع. استخدم مدير كلمات مرور.</li>
+                    <li>**المصادقة الثنائية (2FA):** فعّلها على جميع حساباتك الهامة (إضافة خطوة ثانية للدخول، مثل رمز يُرسل إلى هاتفك).</li>
+                    <li>**تحديث البرامج:** تأكد دائماً من تحديث نظام التشغيل والمتصفحات والبرامج لتصحيح الثغرات الأمنية.</li>
+                    <li>**الحذر من التصيد (Phishing):** لا تفتح رسائل أو روابط مشبوهة أو تقدم بيانات حساسة عبر البريد الإلكتروني أو الرسائل غير المتوقعة.</li>
+                    <li>**النسخ الاحتياطي (Backup):** احتفظ بنسخ احتياطية من بياناتك الهامة في مكان آمن ومنفصل عن جهازك.</li>
+                </ul>
+            </section>
+
         </div>
-    </div>
-
-    <div class="portfolio-card">
-
-        <img src="elflsteny87.jpg" alt="elflsteny87.jpg" class="profile-photo">
-
-        <h1>محمود محمد</h1>
-        <h2>خبير برمجة وحلول أمن سيبراني متخصص في مكافحة الابتزاز الإلكتروني</h2>
-
-        <p>
-            أقدم حلولاً برمجية متكاملة باستخدام **JavaScript** وتقنيات الويب الحديثة، مع خبرة عميقة في **الأمن السيبراني**. أنا متخصص في مساعدة الأفراد والشركات على **حل مشاكل الابتزاز الإلكتروني** واستعادة البيانات وتأمين الحسابات ضد الاختراق. هدفنا هو الأمان الرقمي الكامل.
-        </p>
-
-        <a href="https://wa.me/201112105322" target="_blank" class="whatsapp-button">
-            <span class="whatsapp-icon"><i class="fab fa-whatsapp"></i></span>
-            تواصل معي عبر واتساب فقط
-        </a>
     </div>
 
 </body>
