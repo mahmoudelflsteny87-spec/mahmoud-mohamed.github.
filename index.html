@@ -3,182 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حماية وتوعية ضد الاختراق - موقعك</title>
+    <title>محمود محمد - مطور ويب وأمن سيبراني</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* تعريف الألوان الأساسية والتأثيرات (Dark Blue Theme) */
+        /* تعريف الألوان الأساسية */
         :root {
-            --dark-blue-glow: #000080; /* أزرق كحلي غامق */
-            --black-bg: #0d0d1a; /* أسود مائل للأزرق الداكن جداً */
-            --text-color: #e0e0f0; /* لون النص الأساسي (أبيض مائل للرمادي/أزرق) */
-            --accent-color: #00FFFF; /* لون سماوي/أكوا للمعة والتأكيد */
+            --primary-blue: #1c2b4a; /* الأزرق الداكن الأساسي للخلفية */
+            --dark-blue-text: #001f3f; /* أزرق داكن جداً للنصوص */
+            --text-color: #ffffff; /* لون النص الأساسي (أبيض) */
+            --accent-color: #5d9cec; /* لون أزرق فاتح مميز للأزرار */
+            --navbar-bg: rgba(28, 43, 74, 0.9); /* خلفية شريط التنقل شفافة قليلاً */
         }
 
-        /* تنسيق الجسم العام للموقع */
+        /* ---------------------------------------------------- */
+        /* التنسيقات العامة والخط */
+        /* ---------------------------------------------------- */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', sans-serif;
             color: var(--text-color);
-            background-color: var(--black-bg);
-            line-height: 1.7;
-            overflow-x: hidden;
-            text-align: right; /* محاذاة النص لليمين للعربية */
+            background-color: var(--primary-blue);
+            line-height: 1.6;
             direction: rtl; /* اتجاه الكتابة من اليمين لليسار */
+            text-align: right;
+            overflow-x: hidden;
         }
 
-        /* حاوية الأقسام الرئيسية - الآن تعمل بالطول */
-        .main-container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px 0;
+        /* ---------------------------------------------------- */
+        /* خلفية النمط المنقوش (Pattern Background) */
+        /* ---------------------------------------------------- */
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                /* هذا الجزء يُنشئ نمطاً هندسياً بسيطاً ومكرراً */
+                radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0),
+                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0, rgba(255, 255, 255, 0.03) 1px, transparent 0, transparent 15px);
+            background-size: 15px 15px, 30px 30px;
+            pointer-events: none; /* لضمان عدم حجب التفاعلات */
+            opacity: 1;
         }
 
-        /* تنسيق الأقسام الفردية */
-        section {
-            padding: 25px 30px;
-            margin-bottom: 30px;
-            border-radius: 12px;
-            background: var(--dark-blue-glow);
-            /* تأثير لمعة خفيفة */
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), 0 0 10px rgba(0, 0, 0, 0.5) inset;
+        /* ---------------------------------------------------- */
+        /* شريط التنقل (Navbar) العلوي */
+        /* ---------------------------------------------------- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: var(--navbar-bg);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            width: calc(100% - 100px);
+            z-index: 100;
         }
 
-        /* القسم المميز - "عني" والتواصل */
-        #about-and-contact {
-            background: linear-gradient(135deg, var(--dark-blue-glow) 0%, #0000CD 50%, var(--dark-blue-glow) 100%);
-            border: 2px solid var(--accent-color);
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
         }
 
-        /* تنسيق العناوين */
-        h1, h2, h3 {
-            border-bottom: 2px solid rgba(255, 255, 255, 0.15);
-            padding-bottom: 12px;
-            margin-top: 20px;
-            margin-bottom: 20px;
+        .search-contact {
             display: flex;
             align-items: center;
-            justify-content: flex-end; /* لترتيب الأيقونة على اليمين في RTL */
-            color: var(--accent-color);
         }
-        h1 { font-size: 2.5em; }
-        h2 { font-size: 1.8em; }
 
-        /* تنسيق أيقونة القسم */
-        .section-icon {
-            font-size: 1.2em;
-            margin-right: 10px; /* المسافة بين الأيقونة والعنوان في RTL */
-            color: var(--accent-color);
+        .search-input {
+            padding: 8px 15px;
+            margin-right: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            display: inline-flex;
+            color: var(--text-color);
+            text-align: right;
+        }
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .contact-email {
+            color: var(--accent-color);
+            margin-right: 20px;
+            text-decoration: none;
+        }
+
+        /* ---------------------------------------------------- */
+        /* قسم المحتوى الرئيسي (البطاقة المركزية) */
+        /* ---------------------------------------------------- */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding-top: 80px; /* لتفادي شريط التنقل */
+        }
+
+        .profile-card {
+            display: flex;
             align-items: center;
             justify-content: center;
+            width: 80%;
+            max-width: 900px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-top: -50px; /* لإعطاء تأثير الارتفاع عن المركز */
+        }
+        
+        /* الصورة الشخصية الدائرية */
+        .profile-image-container {
+            position: relative;
+            margin-left: 50px; /* مسافة بين الصورة والنص في RTL */
         }
 
-        /* تنسيق روابط التواصل الاجتماعي */
-        .contact-link {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end; /* محاذاة لليمين */
-            margin: 15px 0;
-            padding: 12px 15px;
-            background: #1a1a33; /* لون خلفية أغمق للروابط */
-            color: var(--text-color);
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.3s ease, transform 0.2s ease;
-            font-size: 1.1em;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+            box-shadow: 0 0 15px rgba(93, 156, 236, 0.5);
         }
-        .contact-link:hover {
-            background: var(--accent-color);
-            color: var(--black-bg);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        
+        /* زر "دعنا نبدأ الآن" (فوق الصورة) */
+        .start-button {
+            position: absolute;
+            bottom: -20px;
+            right: 0; /* في RTL */
+            background-color: var(--accent-color);
+            color: var(--dark-blue-text);
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
         }
-        .contact-link span {
-            margin-left: 10px; /* مسافة بين الأيقونة والنص في RTL */
-            margin-right: 0;
-            font-size: 1.3em;
+        .start-button:hover {
+            background-color: #3e81d7;
         }
 
-        /* تنسيق الروابط داخل الأقسام */
-        section a {
+        /* قسم النص والنبذة */
+        .profile-details {
+            text-align: right;
+            flex-grow: 1;
+        }
+
+        .greeting {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .title {
             color: var(--accent-color);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        section a:hover {
-            text-decoration: underline;
-            color: #FFFFFF;
+            font-size: 1.5em;
+            margin-bottom: 15px;
         }
 
-        /* تنسيق القوائم */
-        ul, ol {
-            padding-right: 20px;
+        .bio {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* الأزرار في قسم النبذة */
+        .action-buttons {
+            display: flex;
+            justify-content: flex-end; /* محاذاة لليمين */
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            margin-right: 15px;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--dark-blue-text);
+        }
+        .btn-primary:hover {
+            background-color: #3e81d7;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--text-color);
+        }
+        .btn-secondary:hover {
+            background-color: var(--text-color);
+            color: var(--primary-blue);
+        }
+
+        /* أيقونات التواصل الاجتماعي الصغيرة */
+        .social-icons {
+            display: flex;
+            margin-right: 20px;
+        }
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.2em;
+            transition: background 0.3s;
+        }
+        .social-icon:hover {
+            background-color: var(--accent-color);
+            color: var(--dark-blue-text);
+        }
+
+        /* ---------------------------------------------------- */
+        /* استجابة الشاشات الصغيرة (Responsive Design) */
+        /* ---------------------------------------------------- */
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 15px 20px;
+                width: calc(100% - 40px);
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .search-contact {
+                margin-top: 10px;
+            }
+            .profile-card {
+                flex-direction: column; /* جعل العناصر تحت بعضها */
+                text-align: center;
+                width: 90%;
+            }
+            .profile-image-container {
+                margin-left: 0;
+                margin-bottom: 30px;
+            }
+            .profile-details {
+                text-align: center;
+            }
+            .action-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .btn {
+                margin: 10px 10px 0 10px;
+            }
+            .social-icons {
+                margin-top: 20px;
+                margin-right: 0;
+                justify-content: center;
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
+    <div class="background-pattern"></div>
 
-        <section id="about-and-contact">
-            <h2>عني - مؤسس الموقع <span class="section-icon">👤</span></h2>
-            <p>مرحباً! أنا [**اسمك**]، مطور ومهتم بأمن المعلومات. أنشأت هذا الموقع لنشر الوعي بأهمية **الأمن السيبراني** وتقديم إرشادات عملية لمساعدة الأفراد على حماية أنفسهم وبياناتهم من التهديدات والاختراقات الإلكترونية المتزايدة.</p>
-            <p>هدفي هو تمكينك بالمعرفة اللازمة لتصبح أكثر أماناً على الإنترنت.</p>
+    <nav class="navbar">
+        <a href="#" class="logo">developerG6</a>
+        <div class="search-contact">
+            <a href="mailto:developer@gmail.com" class="contact-email">developer@gr.chat</a>
+            <input type="text" class="search-input" placeholder="أو إبحث هنا">
+        </div>
+        <a href="#" class="logo" style="font-size: 1.2em; font-weight: 400; color: rgba(255, 255, 255, 0.7);">مطور ويب وسيبراني</a>
+    </nav>
 
-            <hr style="border-color: rgba(255, 255, 255, 0.3); margin: 30px 0;">
-
-            <h2>تواصل معي <span class="section-icon">✉️</span></h2>
+    <div class="hero-section">
+        <div class="profile-card">
             
-            <a href="https://wa.me/201112105322" target="_blank" class="contact-link" style="background: #25D366;"><span>🟢</span> واتساب (WhatsApp) - **01112105322**</a>
-            <a href="https://www.facebook.com/YOUR_FACEBOOK_ID" target="_blank" class="contact-link" style="background: #1877F2;"><span>🔵</span> فيسبوك (Facebook)</a>
-            <a href="mailto:your.email@example.com" target="_blank" class="contact-link" style="background: #A0A0A0;"><span>📧</span> بريد إلكتروني</a>
-        </section>
+            <div class="profile-image-container">
+                <img src="YOUR_PROFILE_IMAGE.jpg" alt="صورة محمود محمد" class="profile-image">
+                <button class="start-button">دعنا نبدأ الآن</button>
+            </div>
 
-        <section id="safety-guide">
-            <h2>دليل الأمان السيبراني <span class="section-icon">🛡️</span></h2>
-            <p>استكشف أقسام الموقع لتتعلم كل ما يتعلق بالحماية من الهكرز، وكيفية بناء درعك الرقمي الخاص.</p>
-        </section>
+            <div class="profile-details">
+                <p class="greeting">مرحباً، أنا **محمود محمد**</p>
+                <p class="title">مطور ويب ومتخصص أمن سيبراني</p>
+                <p class="bio">
+                    أقوم بإنشاء تطبيقات ويب آمنة وعصرية تركز على تجربة المستخدم والأداء المتميز. [يمكنك هنا إضافة عبارة Full Stack dev]
+                </p>
 
-        <section id="what-is-hacker">
-            <h2>ما معنى كلمة "هكر"؟ <span class="section-icon">🔎</span></h2>
-            <p>كلمة **"هاكر"** تشير إلى شخص لديه مهارات عالية في الحاسوب والبرمجة. تُقسم إلى أنواع مختلفة حسب نية الشخص:</p>
-            <ul>
-                <li>**الهاكر الأخلاقي (White Hat):** يعمل لحماية الأنظمة وكشف الثغرات بشكل قانوني.</li>
-                <li>**الهاكر المخترق (Black Hat):** يستخدم مهاراته لأغراض ضارة وغير قانونية (سرقة، تدمير، ابتزاز).</li>
-                <li>**الهاكر الرمادي (Gray Hat):** يقع بين الاثنين، قد يخترق نظامًا دون إذن ثم يخبر المالك بالثغرة.</li>
-            </ul>
-        </section>
-        
-        <section id="how-they-hack">
-            <h2>كيف يعمل الهكر عملية الاختراق؟ <span class="section-icon">🕵️</span></h2>
-            <p>الاختراق عملية ممنهجة تتم عبر مراحل تشمل:</p>
-            <ol>
-                <li>**الاستطلاع:** جمع المعلومات عن الهدف.</li>
-                <li>**المسح والبحث عن الثغرات:** فحص النظام بحثاً عن أي نقاط ضعف.</li>
-                <li>**الوصول الفعلي:** استغلال الثغرة المكتشفة للدخول للنظام (مثل: التصيد الاحتيالي أو استغلال ضعف برمجي).</li>
-                <li>**المحافظة على الوصول:** إنشاء "باب خلفي" لضمان استمرار الدخول لاحقاً.</li>
-                <li>**تغطية الآثار:** إخفاء الدليل لتجنب الكشف.</li>
-            </ol>
-        </section>
+                <div class="action-buttons">
+                    <button class="btn btn-secondary">عرض أعمالي</button>
+                    <button class="btn btn-primary">اتصل بي</button>
+                    <div class="social-icons">
+                        <a href="YOUR_INSTAGRAM_LINK" class="social-icon">📷</a>
+                        <a href="YOUR_FACEBOOK_LINK" class="social-icon">📘</a>
+                        <a href="YOUR_LINKEDIN_LINK" class="social-icon">in</a>
+                    </div>
+                </div>
+            </div>
 
-        <section id="self-protection">
-            <h2>كيف تحمي نفسك من الهكر؟ <span class="section-icon">🔒</span></h2>
-            <p>الحماية تتطلب يقظة واتخاذ إجراءات وقائية أساسية:</p>
-            <ul>
-                <li>**كلمات مرور قوية والمصادقة الثنائية (2FA):** استخدم كلمات مرور فريدة وطويلة، وفعّل 2FA على كل حساباتك الهامة.</li>
-                <li>**التحديث المستمر:** تحديث جميع برامجك وأنظمة التشغيل لسد الثغرات الأمنية.</li>
-                <li>**الحذر من الروابط المشبوهة:** لا تنقر على روابط أو تفتح مرفقات من مصادر غير موثوقة (التصيد الاحتيالي).</li>
-                <li>**النسخ الاحتياطي للبيانات:** احتفظ بنسخ احتياطية من ملفاتك الهامة في مكان آمن ومنفصل.</li>
-                <li>**استخدام برامج الحماية:** تأكد من وجود برنامج مضاد للفيروسات محدث وجدار حماية نشط.</li>
-            </ul>
-        </section>
-
+        </div>
     </div>
 
 </body>
