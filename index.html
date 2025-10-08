@@ -1,325 +1,95 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محمود محمد - مطور ويب وأمن سيبراني</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* تعريف الألوان الأساسية */
-        :root {
-            --primary-blue: #1c2b4a; /* الأزرق الداكن الأساسي للخلفية */
-            --dark-blue-text: #001f3f; /* أزرق داكن جداً للنصوص */
-            --text-color: #ffffff; /* لون النص الأساسي (أبيض) */
-            --accent-color: #5d9cec; /* لون أزرق فاتح مميز للأزرار */
-            --navbar-bg: rgba(28, 43, 74, 0.9); /* خلفية شريط التنقل شفافة قليلاً */
-        }
-
-        /* ---------------------------------------------------- */
-        /* التنسيقات العامة والخط */
-        /* ---------------------------------------------------- */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
-            color: var(--text-color);
-            background-color: var(--primary-blue);
-            line-height: 1.6;
-            direction: rtl; /* اتجاه الكتابة من اليمين لليسار */
-            text-align: right;
-            overflow-x: hidden;
-        }
-
-        /* ---------------------------------------------------- */
-        /* خلفية النمط المنقوش (Pattern Background) */
-        /* ---------------------------------------------------- */
-        .background-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                /* هذا الجزء يُنشئ نمطاً هندسياً بسيطاً ومكرراً */
-                radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0),
-                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0, rgba(255, 255, 255, 0.03) 1px, transparent 0, transparent 15px);
-            background-size: 15px 15px, 30px 30px;
-            pointer-events: none; /* لضمان عدم حجب التفاعلات */
-            opacity: 1;
-        }
-
-        /* ---------------------------------------------------- */
-        /* شريط التنقل (Navbar) العلوي */
-        /* ---------------------------------------------------- */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            background-color: var(--navbar-bg);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: fixed;
-            top: 0;
-            width: calc(100% - 100px);
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: var(--text-color);
-            text-decoration: none;
-        }
-
-        .search-contact {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-input {
-            padding: 8px 15px;
-            margin-right: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--text-color);
-            text-align: right;
-        }
-        .search-input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .contact-email {
-            color: var(--accent-color);
-            margin-right: 20px;
-            text-decoration: none;
-        }
-
-        /* ---------------------------------------------------- */
-        /* قسم المحتوى الرئيسي (البطاقة المركزية) */
-        /* ---------------------------------------------------- */
-        .hero-section {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-            padding-top: 80px; /* لتفادي شريط التنقل */
-        }
-
-        .profile-card {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 80%;
-            max-width: 900px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            margin-top: -50px; /* لإعطاء تأثير الارتفاع عن المركز */
-        }
-        
-        /* الصورة الشخصية الدائرية */
-        .profile-image-container {
-            position: relative;
-            margin-left: 50px; /* مسافة بين الصورة والنص في RTL */
-        }
-
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--accent-color);
-            box-shadow: 0 0 15px rgba(93, 156, 236, 0.5);
-        }
-        
-        /* زر "دعنا نبدأ الآن" (فوق الصورة) */
-        .start-button {
-            position: absolute;
-            bottom: -20px;
-            right: 0; /* في RTL */
-            background-color: var(--accent-color);
-            color: var(--dark-blue-text);
-            padding: 8px 15px;
-            border: none;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .start-button:hover {
-            background-color: #3e81d7;
-        }
-
-        /* قسم النص والنبذة */
-        .profile-details {
-            text-align: right;
-            flex-grow: 1;
-        }
-
-        .greeting {
-            font-size: 2.5em;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .title {
-            color: var(--accent-color);
-            font-size: 1.5em;
-            margin-bottom: 15px;
-        }
-
-        .bio {
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* الأزرار في قسم النبذة */
-        .action-buttons {
-            display: flex;
-            justify-content: flex-end; /* محاذاة لليمين */
-            align-items: center;
-        }
-
-        .btn {
-            padding: 10px 25px;
-            margin-right: 15px;
-            border: none;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: var(--dark-blue-text);
-        }
-        .btn-primary:hover {
-            background-color: #3e81d7;
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text-color);
-            border: 2px solid var(--text-color);
-        }
-        .btn-secondary:hover {
-            background-color: var(--text-color);
-            color: var(--primary-blue);
-        }
-
-        /* أيقونات التواصل الاجتماعي الصغيرة */
-        .social-icons {
-            display: flex;
-            margin-right: 20px;
-        }
-        .social-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 10px;
-            text-decoration: none;
-            color: var(--text-color);
-            font-size: 1.2em;
-            transition: background 0.3s;
-        }
-        .social-icon:hover {
-            background-color: var(--accent-color);
-            color: var(--dark-blue-text);
-        }
-
-        /* ---------------------------------------------------- */
-        /* استجابة الشاشات الصغيرة (Responsive Design) */
-        /* ---------------------------------------------------- */
-        @media (max-width: 900px) {
-            .navbar {
-                padding: 15px 20px;
-                width: calc(100% - 40px);
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .search-contact {
-                margin-top: 10px;
-            }
-            .profile-card {
-                flex-direction: column; /* جعل العناصر تحت بعضها */
-                text-align: center;
-                width: 90%;
-            }
-            .profile-image-container {
-                margin-left: 0;
-                margin-bottom: 30px;
-            }
-            .profile-details {
-                text-align: center;
-            }
-            .action-buttons {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            .btn {
-                margin: 10px 10px 0 10px;
-            }
-            .social-icons {
-                margin-top: 20px;
-                margin-right: 0;
-                justify-content: center;
-                width: 100%;
-            }
-        }
-    </style>
-</head>
+    <title>بوابة الكود والحماية | دليلك للبرمجة والأمن الرقمي</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlalDLuL+BwX0bB+Q2j/Q5s5I5I5f+B0B0C0B0C0B0C0B0C0B0C0B0C0B0C0B0C0B0C0B0C0B0C0B0C0B0C0B0C0B0C0B0C0B0C0B0C0B0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0B0C0C0C0C0C0B0C0C0C0C0C0C0B0C0C0C0C0C0C0C0B0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C00B5B" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
 <body>
 
-    <div class="background-pattern"></div>
+    <canvas id="matrix-background"></canvas>
 
-    <nav class="navbar">
-        <a href="#" class="logo">dpMahmoud</a>
-        <div class="search-contact">
-            <a href="paplomahmoud5@gmail.com" class="contact-email">mahmoud/a>
-            <input type="text" class="search-input" placeholder="أو إبحث هنا">
+    <header>
+        <div class="container">
+            <h1><span class="highlight">💻</span> بوابة الكود والحماية</h1>
+            <nav>
+                <a href="#intro">الرئيسية</a>
+                <a href="#learning">تعلم البرمجة</a>
+                <a href="#phone-security">حماية الهاتف</a>
+                <a href="#social-security">أمن السوشيال ميديا</a>
+                <a href="#contact">تواصل معنا</a>
+            </nav>
         </div>
-        <a href="#" class="logo" style="font-size: 1.2em; font-weight: 400; color: rgba(255, 255, 255, 0.7);">مطور ويب وسيبراني</a>
-    </nav>
+    </header>
 
-    <div class="hero-section">
-        <div class="profile-card">
-            
-            <div class="profile-image-container">
-                <img src="YOUR_PROFILE_IMAGE.jpg" alt="Welcome class="profile-image">
-                <button class="start-button">دعنا نب الآن</button>
-            </div>
+    <main class="container">
 
-            <div class="profile-details">
-                <p class="greeting">Welcome*محمود محمد*</p>
-                <p class="title"> مطور ويب ومتخصص أمن سيبراني</p>
-                <p class="bio">
-                    أقوم بإنشاء تطبيقات ويب آمنة وعصرية تركز على تجربة المستخدم والأداء المتميز. [يمكنك هنا إضافة عبارة Full Stack dev]
-                </p>
+        <section id="intro" class="card fade-in">
+            <h2>مرحباً بك في عالم الكود والأمان الرقمي!</h2>
+            <p>
+                في هذا الموقع، ستجد دليلاً شاملاً لرحلتك في عالم البرمجة، بالإضافة إلى نصائح عملية وفعالة لتأمين حياتك الرقمية وحماية حساباتك الشخصية من أي تهديدات محتملة. انضم إلينا لنتعلم وننمو معًا في الفضاء الرقمي المتغير باستمرار.
+            </p>
+        </section>
 
-                <div class="action-buttons">
-                    <button class="btn btn-secondary">عرض أعمالي</button>
-                    <button class="btn btn-primary">اتصل بي</button>
-                    <div class="social-icons">
-                        <a href="YOUR_INSTAGRAM_LINK" class="social-icon">📷</a>
-                        <a href="YOUR_FACEBOOK_LINK"https:/www.facebook.com/mahmoud6445">📘</a>
-                        <a href="YOUR_LINKEDIN_LINK" class="social-icon">in</a>
-                    </div>
-                </div>
-            </div>
+        <section id="learning" class="card fade-in">
+            <h2><span class="highlight">💡</span> كيف أتعلم البرمجة؟</h2>
+            <p>
+                البرمجة هي مهارة المستقبل، والبدء فيها ليس صعبًا كما يبدو. إليك بعض الخطوات لمساعدتك في رحلتك:
+            </p>
+            <ul>
+                <li>**اختر لغتك الأولى:** ابدأ بلغة سهلة للمبتدئين مثل <span class="code-highlight">Python</span> (للذكاء الاصطناعي وتحليل البيانات) أو <span class="code-highlight">JavaScript</span> (لتطوير الويب التفاعلي).</li>
+                <li>**تعلم الأساسيات:** ركز على مفاهيم المتغيرات، الدوال، الحلقات، والشروط.</li>
+                <li>**المصادر التعليمية:** استغل المنصات التعليمية المجانية والمدفوعة مثل <span class="highlight">Udemy, Coursera, FreeCodeCamp</span>.</li>
+                <li>**التطبيق العملي:** أفضل طريقة للتعلم هي بناء مشاريع صغيرة. ابدأ بمشروع بسيط ثم طوره.</li>
+                <li>**المجتمعات البرمجية:** انضم إلى منتديات ومجتمعات المبرمجين لطرح الأسئلة وتبادل الخبرات.</li>
+            </ul>
+        </section>
 
-        </div>
+        <section id="phone-security" class="card fade-in">
+            <h2><span class="highlight">📱</span> حماية هاتفك من الاختراق</h2>
+            <p>
+                هاتفك الذكي يحتوي على الكثير من معلوماتك الشخصية. حمايته أصبحت ضرورة قصوى. اتبع هذه الإرشادات للحفاظ على أمان جهازك:
+            </p>
+            <ul>
+                <li>**تحديثات النظام:** حافظ على تحديث نظام التشغيل والتطبيقات باستمرار لسد الثغرات الأمنية.</li>
+                <li>**كلمات مرور قوية:** استخدم كلمات مرور معقدة وفريدة لكل تطبيق وحساب. فكر في استخدام مدير كلمات المرور.</li>
+                <li>**المصادقة الثنائية (2FA):** فعلها في كل مكان ممكن لإضافة طبقة حماية إضافية.</li>
+                <li>**التطبيقات الموثوقة:** قم بتنزيل التطبيقات فقط من المتاجر الرسمية (متجر <span class="highlight">Google Play</span> أو <span class="highlight">Apple App Store</span>).</li>
+                <li>**الشبكات العامة:** تجنب الاتصال بشبكات <span class="highlight">Wi-Fi</span> العامة غير الآمنة، واستخدم <span class="highlight">VPN</span> إذا اضطررت لذلك.</li>
+                <li>**النسخ الاحتياطي:** قم بعمل نسخ احتياطية لبياناتك بانتظام لتجنب فقدانها.</li>
+            </ul>
+        </section>
+
+        <section id="social-security" class="card fade-in">
+            <h2><span class="highlight">🔐</span> حماية حسابات السوشيال الميديا</h2>
+            <p>
+                حساباتك على منصات التواصل الاجتماعي هي هدف جذاب للمخترقين. تأكد من اتخاذ هذه الإجراءات لحمايتها:
+            </p>
+            <ul>
+                <li>**المصادقة الثنائية (2FA):** هذه هي خط الدفاع الأول والأكثر أهمية. قم بتفعيلها على <span class="highlight">Facebook, Instagram, Twitter</span> وكل حساباتك.</li>
+                <li>**كلمات مرور فريدة:** لا تستخدم نفس كلمة المرور لأكثر من حساب.</li>
+                <li>**التحقق من الروابط:** كن حذراً من رسائل التصيد (<span class="highlight">Phishing</span>) والروابط المشبوهة. تحقق دائمًا من مصدر الرابط قبل النقر عليه.</li>
+                <li>**التحقق من أذونات التطبيقات:** راجع التطبيقات والمواقع التي منحتها صلاحية الوصول إلى حساباتك وقم بإزالة غير الضروري منها.</li>
+                <li>**الخصوصية:** اضبط إعدادات الخصوصية الخاصة بك لتتحكم في من يرى معلوماتك ومنشوراتك.</li>
+                <li>**تسجيل الخروج:** سجل الخروج من حساباتك بعد استخدامها على أجهزة عامة.</li>
+            </ul>
+        </section>
+    </main>
+
+    <div class="social-contact-buttons">
+        <a href="https://www.facebook.com/YourFacebookPage" target="_blank" class="fab fa-facebook-f social-btn facebook-btn" title="تواصل معنا عبر فيسبوك"></a>
+        <a href="https://wa.me/+201000000000" target="_blank" class="fab fa-whatsapp social-btn whatsapp-btn" title="تواصل معنا عبر واتساب"></a>
     </div>
 
+    <footer>
+        <div class="container" id="contact">
+            <p>&copy; 2024 بوابة الكود والحماية. جميع الحقوق محفوظة.</p>
+            <p>للتواصل والاستفسارات، يمكنك استخدام الأزرار الجانبية أو مراسلتنا على: <a href="mailto:info@yourwebsite.com">info@yourwebsite.com</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
