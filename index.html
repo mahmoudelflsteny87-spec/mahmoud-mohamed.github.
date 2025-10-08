@@ -24,15 +24,17 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-image: url('animated_background.jpg'); /* تأكد من اسم ملف صورتك للخلفية */
+            /* **اسم ملف الخلفية (برمجة-المواقع.webp)** */
+            background-image: url('برمجة-المواقع.webp'); 
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
+            /* تقليل سطوع الخلفية */
             filter: brightness(0.6) contrast(1.2); 
             animation: panBackground 40s linear infinite alternate;
         }
 
-        /* تراكب لوني على الصورة */
+        /* تراكب لوني على الصورة لمنع التداخل - **تم زيادة العتامة هنا** */
         .animated-background::after {
             content: '';
             position: absolute;
@@ -40,7 +42,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 51, 0.6);
+            /* تم زيادة الشفافية من 0.6 إلى 0.85 */
+            background: rgba(0, 0, 51, 0.85); 
             z-index: 0;
         }
 
@@ -70,15 +73,15 @@
         .header-left-content {
             display: flex;
             align-items: center;
-            gap: 10px; /* مسافة بين الأيقونة والاسم */
-            order: -1; /* ليكون في أقصى اليسار في تصميم RTL */
+            gap: 10px;
+            order: -1;
         }
 
         /* أيقونة الصورة في الرأس */
         .profile-icon {
-            width: 50px; /* حجم الأيقونة */
+            width: 50px; 
             height: 50px;
-            border-radius: 50%; /* لجعلها دائرية */
+            border-radius: 50%; 
             border: 2px solid #00FFFF;
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
             object-fit: cover;
@@ -110,20 +113,21 @@
             font-size: 0.9em;
         }
         
-        /* حاوية المحتوى الرئيسية */
+        /* حاوية المحتوى الرئيسية - **تم زيادة العتامة هنا** */
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.6);
+            /* تم زيادة الشفافية من 0.6 إلى 0.9 */
+            background-color: rgba(0, 0, 0, 0.9); 
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
             position: relative;
             z-index: 1;
         }
 
-        /* باقي التنسيقات (لم تتغير) */
+        /* باقي التنسيقات */
         .section {
             padding: 20px 0;
             border-bottom: 1px dashed #009999;
@@ -156,6 +160,9 @@
             border: 5px solid #00FFFF;
             box-shadow: 0 0 25px #00FFFF;
             object-fit: cover;
+            /* **تم إضافة عزل هنا لتبدو الصورة فوق الخلفية المعقدة** */
+            position: relative; 
+            z-index: 10; 
         }
 
         .profile-section .profile-text {
@@ -177,12 +184,8 @@
             margin-bottom: 30px;
         }
 
-        .certificates-section h2 {
-            margin-bottom: 20px;
-        }
-
         .certificate-button {
-            background-color: #008CBA; /* لون أزرق للزر */
+            background-color: #008CBA; 
             color: white;
             padding: 15px 30px;
             text-decoration: none;
@@ -191,7 +194,7 @@
             font-weight: bold;
             box-shadow: 0 0 20px rgba(0, 140, 186, 0.5);
             transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-            display: inline-block; /* ليتصرف كزر ويتم تطبيق التباعد عليه */
+            display: inline-block;
         }
 
         .certificate-button:hover {
@@ -201,7 +204,7 @@
         }
 
 
-        /* أزرار التواصل الاجتماعي */
+        /* أزرار التواصل الاجتماعي (لم تتغير) */
         .social-buttons {
             text-align: center;
             padding: 20px 0;
@@ -233,7 +236,7 @@
             box-shadow: 0 10px 20px rgba(0, 255, 255, 0.5);
         }
 
-        /* زر البداية (لتشجيع الزوار) */
+        /* زر البداية (لم يتغير) */
         .cta-button {
             text-align: center;
             margin: 40px 0;
@@ -266,7 +269,7 @@
             .header-left-content {
                 order: 0; 
                 padding: 0 0 10px 0;
-                justify-content: center; /* توسيط الاسم والأيقونة في الشاشات الصغيرة */
+                justify-content: center;
             }
             .profile-section {
                 flex-direction: column;
@@ -298,371 +301,7 @@
     <div class="container">
         
         <div class="profile-section">
-            <img src="my_profile.jpg" alt="<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالم البرمجة والأمان الرقمي</title>
-    <style>
-        /* التنسيق الأساسي للجسم والموقع */
-        body {
-            font-family: 'Arial', sans-serif;
-            color: #E6E6FF; 
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* خلفية الصورة المتحركة */
-        .animated-background {
-            position: fixed; 
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-image: url('animated_background.jpg'); /* تأكد من اسم ملف صورتك للخلفية */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            filter: brightness(0.6) contrast(1.2); 
-            animation: panBackground 40s linear infinite alternate;
-        }
-
-        /* تراكب لوني على الصورة */
-        .animated-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 51, 0.6);
-            z-index: 0;
-        }
-
-        /* تعريف حركة الخلفية */
-        @keyframes panBackground {
-            0% {
-                background-position: 0% 0%;
-            }
-            100% {
-                background-position: 100% 100%;
-            }
-        }
-
-        /* الرأس (Header) */
-        header {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px 40px; 
-            border-bottom: 3px solid #00FFFF;
-            position: relative;
-            z-index: 1;
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-
-        /* تنسيق قسم الاسم والأيقونة في الرأس */
-        .header-left-content {
-            display: flex;
-            align-items: center;
-            gap: 10px; /* مسافة بين الأيقونة والاسم */
-            order: -1; /* ليكون في أقصى اليسار في تصميم RTL */
-        }
-
-        /* أيقونة الصورة في الرأس */
-        .profile-icon {
-            width: 50px; /* حجم الأيقونة */
-            height: 50px;
-            border-radius: 50%; /* لجعلها دائرية */
-            border: 2px solid #00FFFF;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-            object-fit: cover;
-        }
-
-        /* تنسيق اسم ELFLSTENY */
-        .header-name {
-            color: #FFD700; 
-            font-size: 1.5em;
-            font-weight: bold;
-            text-shadow: 0 0 8px #FFD700;
-        }
-        
-        /* تنسيق العنوان الرئيسي */
-        .header-title {
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        header h1 {
-            color: #00FFFF;
-            text-shadow: 0 0 10px #00FFFF;
-            margin: 0;
-            font-size: 2em;
-        }
-
-        header p {
-            margin: 5px 0 0 0;
-            font-size: 0.9em;
-        }
-        
-        /* حاوية المحتوى الرئيسية */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-            position: relative;
-            z-index: 1;
-        }
-
-        /* باقي التنسيقات (لم تتغير) */
-        .section {
-            padding: 20px 0;
-            border-bottom: 1px dashed #009999;
-            margin-bottom: 20px;
-        }
-
-        .section h2 {
-            color: #33FF33;
-            border-bottom: 2px solid #33FF33;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        /* تنسيق قسم الصورة الشخصية (الكبيرة) */
-        .profile-section {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            padding: 30px 0;
-            border-bottom: 2px solid #00FFFF;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .profile-section img {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            border: 5px solid #00FFFF;
-            box-shadow: 0 0 25px #00FFFF;
-            object-fit: cover;
-        }
-
-        .profile-section .profile-text {
-            max-width: 60%;
-            text-align: right;
-        }
-        
-        .profile-section h3 {
-            color: #00FFFF;
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
-
-        /* قسم الشهادات */
-        .certificates-section {
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid #00FFFF;
-            margin-bottom: 30px;
-        }
-
-        .certificates-section h2 {
-            margin-bottom: 20px;
-        }
-
-        .certificate-button {
-            background-color: #008CBA; /* لون أزرق للزر */
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2em;
-            font-weight: bold;
-            box-shadow: 0 0 20px rgba(0, 140, 186, 0.5);
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-            display: inline-block; /* ليتصرف كزر ويتم تطبيق التباعد عليه */
-        }
-
-        .certificate-button:hover {
-            background-color: #00AACC;
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 140, 186, 0.7);
-        }
-
-
-        /* أزرار التواصل الاجتماعي */
-        .social-buttons {
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 30px;
-            border-top: 2px solid #00FFFF;
-        }
-
-        .social-buttons a {
-            display: inline-block;
-            margin: 0 15px;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: #000033;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .social-buttons .facebook {
-            background-color: #1877F2;
-        }
-
-        .social-buttons .whatsapp {
-            background-color: #25D366;
-        }
-
-        .social-buttons a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.5);
-        }
-
-        /* زر البداية (لتشجيع الزوار) */
-        .cta-button {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .cta-button a {
-            background-color: #FF6600;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2em;
-            font-weight: bold;
-            box-shadow: 0 0 20px #FF6600;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .cta-button a:hover {
-            background-color: #FF9933;
-            transform: scale(1.05);
-        }
-
-        /* استجابة التصميم للشاشات الصغيرة */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 20px;
-                text-align: center;
-            }
-            .header-left-content {
-                order: 0; 
-                padding: 0 0 10px 0;
-                justify-content: center; /* توسيط الاسم والأيقونة في الشاشات الصغيرة */
-            }
-            .profile-section {
-                flex-direction: column;
-                text-align: center;
-            }
-            .profile-section .profile-text {
-                max-width: 90%;
-                text-align: center;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="animated-background"></div>
-
-    <header>
-        <div class="header-left-content">
-            <img src="profile_icon.jpg" alt="صورة أيقونة ELFLSTENY" class="profile-icon">
-            <div class="header-name">ELFLSTENY</div>
-        </div>
-        
-        <div class="header-title">
-            <h1>💻 عالم الأمان والبرمجة الرقمي 🛡️</h1>
-            <p>دليلك المتكامل لتعلم البرمجة وحماية حياتك الرقمية.</p>
-        </div>
-    </header>
-
-    <div class="container">
-        
-        <div class="profile-section">
-            <img src="my_profile.jpg" alt="profile.icon.jpg">
-            <div class="profile-text">
-                <h3>أهلاً بك في عالمي الرقمي!</h3>
-                <p>مرحباً بكم في موقعي المتخصص في البرمجة والأمان الرقمي. هنا أشارك معكم شغفي بالتقنية وكيف يمكننا استغلالها بذكاء وأمان. أتمنى أن تجدوا في هذا الموقع كل ما هو مفيد ومحفز لرحلتكم في عالم التكنولوجيا.</p>
-                <p>دعونا نستكشف معاً أسرار الأكواد ونبني مستقبلاً رقمياً آمناً ومشرقاً.</p>
-            </div>
-        </div>
-        
-        <div class="certificates-section">
-            <h2>شهاداتي وخبراتي</h2>
-            <p>شاهد بعضاً من شهاداتي التي تعكس شغفي بالتعلم والتطوير المستمر في مجال البرمجة.</p>
-            <a href="certificate.jpg" target="_blank" class="certificate-button">عرض شهادة ELFLSTENY</a>
-        </div>
-        ---
-
-        <div class="section">
-            <h2>كيف أتعلم البرمجة؟</h2>
-            <p>البرمجة ليست معقدة كما تبدو! ابدأ بتحديد **هدف** واضح، ثم اختر **لغة** مناسبة للمبتدئين مثل Python أو JavaScript. التزم بالتدريب العملي وبناء مشاريع صغيرة. تذكر، الاستمرارية هي المفتاح.</p>
-            <ul>
-                <li>اختر لغة برمجة للمبتدئين (مثل Python أو JavaScript).</li>
-                <li>استخدم منصات تعليمية مجانية ومدفوعة (مثل Coursera، Udacity، أو قنوات YouTube).</li>
-                <li>طبق ما تتعلمه مباشرة عبر بناء مشاريع شخصية.</li>
-                <li>انضم إلى مجتمعات المبرمجين لطرح الأسئلة.</li>
-            </ul>
-        </div>
-
-        ---
-
-        <div class="cta-button">
-            <a href="#programming-guides">ابدأ رحلة التعلم الآن!</a>
-        </div>
-
-        ---
-
-        <div class="section">
-            <h2>📱 كيف أحمي هاتفي من الاختراق؟</h2>
-            <p>الأمان الرقمي يبدأ من جهازك الشخصي. تأكد دائماً من تحديث نظام التشغيل، وتجنب تحميل التطبيقات من مصادر غير موثوقة. استخدم كلمات مرور قوية أو بصمة الإصبع/الوجه.</p>
-            <ul>
-                <li>استخدم قفل شاشة قوي (كلمة مرور، بصمة، أو وجه).</li>
-                <li>لا تفتح الروابط المشبوهة أو رسائل البريد الإلكتروني المجهولة.</li>
-                <li>قم بتفعيل خاصية المصادقة الثنائية (2FA) على جميع حساباتك.</li>
-                <li>تجنب الاتصال بشبكات Wi-Fi عامة وغير آمنة.</li>
-            </ul>
-        </div>
-
-        ---
-
-        <div class="section">
-            <h2>🔒 حماية حسابات السوشيال ميديا الخاصة بك</h2>
-            <p>حساباتك على فيسبوك، إنستجرام، وتويتر هي هدف أساسي للمخترقين. استخدم كلمة مرور فريدة لكل حساب، وقم بتفعيل خيار **المصادقة الثنائية (2FA)** فوراً.</p>
-            <p><strong>تذكر:</strong> لا تشارك رموز التحقق أو كلمات المرور مع أي شخص، حتى لو ادعى أنه من فريق الدعم الفني.</p>
-        </div>
-
-        ---
-
-        <div class="social-buttons">
-            <h3>تواصل معنا</h3>
-            <a href="https://www.facebook.com/mahmoud6445/photos_by" target="_blank" class="facebook">فيسبوك</a>
-            <a href="https://wa.me/2001112105322?text=مرحبا. 🌟 في حاجة لمساعدة لحل إشكال. هل يمكنك المساعدة؟ 💬" target="_blank" class="whatsapp">واتساب</a>
-        </div>
-
-    </div>
-
-</body>
-</html>">
+            <img src="my_profile.jpg" alt="صورة صاحب الموقع">
             <div class="profile-text">
                 <h3>أهلاً بك في عالمي الرقمي!</h3>
                 <p>مرحباً بكم في موقعي المتخصص في البرمجة والأمان الرقمي. هنا أشارك معكم شغفي بالتقنية وكيف يمكننا استغلالها بذكاء وأمان. أتمنى أن تجدوا في هذا الموقع كل ما هو مفيد ومحفز لرحلتكم في عالم التكنولوجيا.</p>
