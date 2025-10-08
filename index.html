@@ -8,32 +8,31 @@
         /* التنسيق الأساسي للجسم والموقع */
         body {
             font-family: 'Arial', sans-serif;
-            color: #E6E6FF; /* لون نص فاتح للتباين */
+            color: #E6E6FF; 
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            overflow-x: hidden; /* لمنع شريط التمرير الأفقي */
+            overflow-x: hidden;
             position: relative;
         }
 
         /* خلفية الصورة المتحركة */
         .animated-background {
-            position: fixed; /* تثبيت الخلفية */
+            position: fixed; 
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* لجعل الخلفية خلف المحتوى */
-            /* اسم ملف الصورة التي أرفقتها (برمجة-المواقع.webp) */
-            background-image: url('animated_background.jpg'); 
-            background-size: cover; /* لملء الخلفية */
+            z-index: -1;
+            background-image: url('animated_background.jpg'); /* تأكد من اسم ملف صورتك */
+            background-size: cover;
             background-repeat: no-repeat;
-            background-position: center center; /* توسيط الصورة */
-            filter: brightness(0.6) contrast(1.2); /* لجعلها أغمق وأكثر حدة */
-            animation: panBackground 40s linear infinite alternate; /* حركة بطيئة */
+            background-position: center center;
+            filter: brightness(0.6) contrast(1.2); 
+            animation: panBackground 40s linear infinite alternate;
         }
 
-        /* تراكب لوني على الصورة لمنح تأثير الأزرق الغامق اللامع المطلوب */
+        /* تراكب لوني على الصورة */
         .animated-background::after {
             content: '';
             position: absolute;
@@ -41,8 +40,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 51, 0.6); /* أزرق غامق جداً مع شفافية */
-            z-index: 0; /* ليكون فوق الصورة وخلف المحتوى */
+            background: rgba(0, 0, 51, 0.6);
+            z-index: 0;
         }
 
         /* تعريف حركة الخلفية */
@@ -55,36 +54,60 @@
             }
         }
 
-        /* الرأس (Header) */
+        /* الرأس (Header) - تم التعديل هنا لـ Flexbox */
         header {
-            background-color: rgba(0, 0, 0, 0.5); /* خلفية شفافة قليلاً */
-            padding: 20px;
-            text-align: center;
-            border-bottom: 3px solid #00FFFF; /* خط أزرق سماوي لامع */
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px 40px; /* زيادة التباعد الأفقي للرأس */
+            border-bottom: 3px solid #00FFFF;
             position: relative;
             z-index: 1;
+            display: flex; /* تفعيل Flexbox */
+            justify-content: space-between; /* توزيع العناصر على الأطراف */
+            align-items: center; /* محاذاة العناصر عمودياً */
+        }
+
+        /* تنسيق اسم ELFLSTENY (الزاوية اليسرى) */
+        .header-name {
+            color: #FFD700; /* لون ذهبي لامع */
+            font-size: 1.5em;
+            font-weight: bold;
+            text-shadow: 0 0 8px #FFD700; /* تأثير توهج خفيف */
+            order: -1; /* لجعل هذا العنصر يظهر أولاً (أقصى اليسار في تصميم RTL) */
+            padding-left: 20px; /* مسافة من اليسار */
+        }
+        
+        /* تنسيق العنوان الرئيسي */
+        .header-title {
+            text-align: center;
+            flex-grow: 1; /* للسماح للعنوان بالتمدد وتوسيط نفسه */
         }
 
         header h1 {
-            color: #00FFFF; /* لون العنوان لامع */
-            text-shadow: 0 0 10px #00FFFF; /* تأثير النيون */
+            color: #00FFFF;
+            text-shadow: 0 0 10px #00FFFF;
             margin: 0;
+            font-size: 2em;
         }
 
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 0.9em;
+        }
+        
         /* حاوية المحتوى الرئيسية */
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.6); /* خلفية نصف شفافة للمحتوى فوق الخلفية */
+            background-color: rgba(0, 0, 0, 0.6);
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); /* ظل لامع */
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
             position: relative;
             z-index: 1;
         }
 
-        /* أقسام المحتوى */
+        /* باقي التنسيقات (لم تتغير) */
         .section {
             padding: 20px 0;
             border-bottom: 1px dashed #009999;
@@ -92,30 +115,29 @@
         }
 
         .section h2 {
-            color: #33FF33; /* لون أخضر نيون للعناوين الفرعية */
+            color: #33FF33;
             border-bottom: 2px solid #33FF33;
             display: inline-block;
             padding-bottom: 5px;
         }
 
-        /* تنسيق قسم الصورة الشخصية */
         .profile-section {
-            display: flex; /* لترتيب الصورة والنص جنبًا إلى جنب */
-            align-items: center; /* لمحاذاة العناصر عمودياً */
-            gap: 30px; /* مسافة بين الصورة والنص */
+            display: flex;
+            align-items: center;
+            gap: 30px;
             padding: 30px 0;
             border-bottom: 2px solid #00FFFF;
             margin-bottom: 30px;
-            flex-wrap: wrap; 
+            flex-wrap: wrap;
             justify-content: center;
         }
 
         .profile-section img {
-            width: 250px; /* حجم الصورة */
+            width: 250px;
             height: 250px;
-            border-radius: 50%; /* لجعل الصورة دائرية */
-            border: 5px solid #00FFFF; /* إطار لامع حول الصورة */
-            box-shadow: 0 0 25px #00FFFF; /* ظل لامع */
+            border-radius: 50%;
+            border: 5px solid #00FFFF;
+            box-shadow: 0 0 25px #00FFFF;
             object-fit: cover;
         }
 
@@ -130,7 +152,6 @@
             margin-bottom: 10px;
         }
 
-        /* أزرار التواصل الاجتماعي */
         .social-buttons {
             text-align: center;
             padding: 20px 0;
@@ -143,35 +164,32 @@
             margin: 0 15px;
             padding: 10px 20px;
             text-decoration: none;
-            color: #000033; /* لون نص داكن للزر */
+            color: #000033;
             border-radius: 5px;
             font-weight: bold;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        /* زر الفيسبوك */
         .social-buttons .facebook {
             background-color: #1877F2;
         }
 
-        /* زر الواتساب */
         .social-buttons .whatsapp {
             background-color: #25D366;
         }
 
         .social-buttons a:hover {
-            transform: translateY(-5px); /* تأثير رفع عند المرور */
+            transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 255, 255, 0.5);
         }
 
-        /* زر البداية (لتشجيع الزوار) */
         .cta-button {
             text-align: center;
             margin: 40px 0;
         }
 
         .cta-button a {
-            background-color: #FF6600; /* لون برتقالي جذاب */
+            background-color: #FF6600;
             color: white;
             padding: 15px 30px;
             text-decoration: none;
@@ -189,6 +207,15 @@
 
         /* استجابة التصميم للشاشات الصغيرة */
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+            }
+            .header-name {
+                order: 0; /* يعود الاسم لمكانه الطبيعي في الترتيب في الشاشات الصغيرة */
+                padding: 0 0 10px 0;
+            }
             .profile-section {
                 flex-direction: column;
                 text-align: center;
@@ -205,8 +232,12 @@
     <div class="animated-background"></div>
 
     <header>
-        <h1>💻 عالم الأمان والبرمجة الرقمي 🛡️</h1>
-        <p>دليلك المتكامل لتعلم البرمجة وحماية حياتك الرقمية.</p>
+        <div class="header-name">ELFLSTENY</div>
+        
+        <div class="header-title">
+            <h1>💻 عالم الأمان والبرمجة الرقمي 🛡️</h1>
+            <p>دليلك المتكامل لتعلم البرمجة وحماية حياتك الرقمية.</p>
+        </div>
     </header>
 
     <div class="container">
