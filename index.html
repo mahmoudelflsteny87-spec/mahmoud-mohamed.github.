@@ -80,16 +80,335 @@
 
     <div class="social-contact-buttons">
         <a href="https://www.facebook.com/YourFacebookPage" target="_blank" class="fab fa-facebook-f social-btn facebook-btn" title="تواصل معنا عبر فيسبوك"></a>
-        <a href="https://wa.me/+201000000000" target="_blank" class="fab fa-whatsapp social-btn whatsapp-btn" title="تواصل معنا عبر واتساب"></a>
+        <a href="https://wa.me/+201112105322" target="_blank" class="fab fa-whatsapp social-btn whatsapp-btn" title="تواصل معنا عبر واتساب"></a>
     </div>
 
     <footer>
         <div class="container" id="contact">
             <p>&copy; 2024 بوابة الكود والحماية. جميع الحقوق محفوظة.</p>
-            <p>للتواصل والاستفسارات، يمكنك استخدام الأزرار الجانبية أو مراسلتنا على: <a href="mailto:info@yourwebsite.com">info@yourwebsite.com</a></p>
+            <p>للتواصل والاستفسارات، يمكنك استخدام الأزرار الجانبية أو مراسلتنا على: <a href="mailto:info@yourwebsite.com">mahmoudelflsteny87@gmail.com</a></p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
+</css>/*
+ * style.css - ملف التنسيقات الرئيسي لموقع "بوابة الكود والحماية"
+ *
+ * هذا الملف يحتوي على جميع الأنماط (CSS) لتصميم الموقع، بما في ذلك:
+ * - الألوان والخلفيات الزرقاء الغامقة اللامعة.
+ * - تنسيق الخطوط والأيقونات.
+ * - استجابة التصميم للأجهزة المختلفة (Responsive Design).
+ * - تنسيق أزرار التواصل.
+ * - تأثيرات الانتقال والتحويم.
+ */
+
+/* -------------------------------------- */
+/* 1. التنسيقات الأساسية والعامة */
+/* -------------------------------------- */
+body {
+    font-family: 'Cairo', 'Arial', sans-serif; /* استخدام خط عربي جذاب */
+    color: #e0e0e0; /* لون نص فاتح لراحة العين على الخلفية الداكنة */
+    margin: 0;
+    padding: 0;
+    line-height: 1.7; /* مسافة بين السطور لتحسين القراءة */
+    background-color: #000033; /* الخلفية الزرقاء الغامقة الأساسية */
+    direction: rtl; /* اتجاه النص من اليمين لليسار للعربية */
+    overflow-x: hidden; /* منع ظهور شريط التمرير الأفقي */
+}
+
+/* التنسيق العام للروابط */
+a {
+    color: #00ffff; /* لون أزرق سماوي لامع للروابط */
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #00e6e6; /* لون أغمق قليلاً عند التحويم */
+    text-decoration: underline;
+}
+
+/* تنسيق لعناصر الـ highlight (التمييز) */
+.highlight {
+    color: #00ff00; /* لون أخضر فوسفوري لتمييز بعض النصوص/الأيقونات */
+    font-weight: bold;
+}
+
+.code-highlight {
+    background-color: rgba(0, 255, 0, 0.1); /* خلفية خفيفة لمصطلحات الكود */
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: 'monospace', 'Courier New', Courier;
+}
+
+/* -------------------------------------- */
+/* 2. الخلفية الديناميكية (Matrix Canvas) */
+/* -------------------------------------- */
+#matrix-background {
+    position: fixed; /* تثبيت الخلفية لتظل في مكانها */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* لجعلها خلف جميع محتوى الصفحة */
+    opacity: 0.08; /* شفافية عالية جدًا لكي لا تعيق القراءة */
+    background: linear-gradient(135deg, #00004d 0%, #000022 100%); /* تدرج لوني للخلفية الأساسية */
+    filter: brightness(0.8); /* تقليل السطوع قليلاً */
+}
+
+/* -------------------------------------- */
+/* 3. حاوية المحتوى العام (Container) */
+/* -------------------------------------- */
+.container {
+    width: 90%;
+    max-width: 1100px; /* تحديد أقصى عرض للمحتوى */
+    margin: 0 auto; /* توسيط الحاوية في الصفحة */
+    padding: 20px 0;
+    position: relative; /* لضمان ظهور المحتوى فوق الخلفية */
+}
+
+/* -------------------------------------- */
+/* 4. رأس الصفحة (Header) */
+/* -------------------------------------- */
+header {
+    background-color: rgba(0, 0, 40, 0.7); /* خلفية شبه شفافة للـ Header */
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 3px solid #00ffff; /* خط سفلي أزرق لامع */
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2); /* ظل خفيف لإضافة عمق */
+    position: sticky; /* لجعل الهيدر ثابتًا عند التمرير */
+    top: 0;
+    z-index: 10; /* ليبقى الهيدر فوق بقية المحتوى */
+}
+
+header h1 {
+    color: #00ffff;
+    margin-bottom: 15px;
+    font-size: 2.5em; /* حجم خط أكبر للعنوان */
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; /* تأثير لمعان النص */
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: 600; /* خط سميك قليلاً */
+    font-size: 1.1em;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    right: 0; /* لتظهر من اليمين لليسار */
+    background-color: #00ff00; /* خط أخضر عند التحويم */
+    transition: width 0.3s ease-out;
+}
+
+nav a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* -------------------------------------- */
+/* 5. بطاقات المحتوى (Card Sections) */
+/* -------------------------------------- */
+.card {
+    background-color: rgba(0, 0, 60, 0.8); /* خلفية داكنة أكثر مع شفافية للبطاقات */
+    padding: 40px;
+    margin-bottom: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4); /* ظل لامع قوي */
+    border-right: 6px solid #00ffff; /* شريط جانبي أزرق لامع */
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* رفع البطاقة قليلاً عند التحويم */
+    box-shadow: 0 0 35px rgba(0, 255, 255, 0.7);
+}
+
+.card h2 {
+    color: #00ffff;
+    border-bottom: 2px solid rgba(0, 255, 255, 0.5);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    font-size: 2em;
+    text-shadow: 0 0 8px #00ffff;
+}
+
+.card p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+ul {
+    list-style-type: none; /* إزالة التنقيط الافتراضي */
+    padding-right: 0;
+    margin-top: 20px;
+}
+
+ul li {
+    margin-bottom: 12px;
+    padding-right: 35px; /* مسافة للرمز المخصص */
+    position: relative;
+    font-size: 1.05em;
+}
+
+ul li::before {
+    content: "➤"; /* استخدام سهم بدلاً من النقطة */
+    color: #00ff00; /* لون أخضر فوسفوري للرمز */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1.5em; /* ضبط المسافة */
+    position: absolute;
+    right: 0;
+    font-size: 1.2em;
+}
+
+/* -------------------------------------- */
+/* 6. أزرار التواصل الاجتماعي (Social Buttons) */
+/* -------------------------------------- */
+.social-contact-buttons {
+    position: fixed;
+    right: 25px; /* وضع الأزرار على اليمين ليتناسب مع اتجاه RTL */
+    bottom: 25px;
+    z-index: 1000; /* لضمان ظهورها فوق كل شيء */
+    display: flex;
+    flex-direction: column; /* ترتيب الأزرار عمودياً */
+    gap: 18px; /* مسافة بين الأزرار */
+}
+
+.social-contact-buttons .social-btn {
+    width: 55px;
+    height: 55px;
+    line-height: 55px; /* لتوسيط الأيقونة عمودياً */
+    text-align: center;
+    font-size: 26px; /* حجم الأيقونة */
+    color: #ffffff;
+    border-radius: 50%; /* لجعل الزر دائرياً */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6); /* ظل للزر */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex; /* لمركزة الأيقونة باستخدام flexbox */
+    justify-content: center;
+    align-items: center;
+}
+
+.social-contact-buttons .social-btn:hover {
+    transform: scale(1.15) rotate(5deg); /* تكبير ودوران بسيط عند التحويم */
+    box-shadow: 0 0 25px #00ffff; /* لمعان حول الزر عند التحويم */
+}
+
+.facebook-btn {
+    background-color: #1877f2; /* لون فيسبوك الرسمي */
+}
+
+.whatsapp-btn {
+    background-color: #25d366; /* لون واتساب الرسمي */
+}
+
+/* -------------------------------------- */
+/* 7. تذييل الصفحة (Footer) */
+/* -------------------------------------- */
+footer {
+    background-color: rgba(0, 0, 30, 0.7);
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+    border-top: 3px solid #00ffff;
+    color: #aaaaaa;
+    font-size: 0.95em;
+    box-shadow: 0 -4px 15px rgba(0, 255, 255, 0.2);
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* -------------------------------------- */
+/* 8. استجابة التصميم (Responsive Design) */
+/* -------------------------------------- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    nav a {
+        margin: 5px 0;
+    }
+
+    .card {
+        padding: 25px;
+        margin-bottom: 25px;
+    }
+
+    .card h2 {
+        font-size: 1.7em;
+    }
+
+    ul li {
+        font-size: 1em;
+        padding-right: 30px;
+    }
+
+    .social-contact-buttons {
+        right: 15px;
+        bottom: 15px;
+        gap: 12px;
+    }
+
+    .social-contact-buttons .social-btn {
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .card {
+        padding: 20px;
+        border-right-width: 4px;
+    }
+
+    .card h2 {
+        font-size: 1.5em;
+    }
+
+    .container {
+        padding: 10px 0;
+    }
+
+    footer {
+        padding: 20px 0;
+    }
+}
+
+/* تأثير ظهور البطاقات (اختياري، يمكن تفعيله بـ JS) */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
