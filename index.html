@@ -5,56 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عالم البرمجة والأمان الرقمي</title>
     <style>
-        /* التنسيق الأساسي للجسم والموقع */
+        /* التنسيق الأساسي للجسم والموقع (خلفية ثابتة) */
         body {
             font-family: 'Arial', sans-serif;
+            background-color: #000033; /* أزرق غامق جداً وثابت */
             color: #E6E6FF; 
             margin: 0;
             padding: 0;
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
-        }
-
-        /* خلفية الصورة المتحركة */
-        .animated-background {
-            position: fixed; 
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            /* **اسم ملف الخلفية (برمجة-المواقع.webp)** */
-            background-image: url('برمجة-المواقع.webp'); 
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            /* تقليل سطوع الخلفية */
-            filter: brightness(0.6) contrast(1.2); 
-            animation: panBackground 40s linear infinite alternate;
-        }
-
-        /* تراكب لوني على الصورة لمنع التداخل - **تم زيادة العتامة هنا** */
-        .animated-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* تم زيادة الشفافية من 0.6 إلى 0.85 */
-            background: rgba(0, 0, 51, 0.85); 
-            z-index: 0;
-        }
-
-        /* تعريف حركة الخلفية */
-        @keyframes panBackground {
-            0% {
-                background-position: 0% 0%;
-            }
-            100% {
-                background-position: 100% 100%;
-            }
+            /* إضافة تأثير الأكواد الشفافة والجذابة على الخلفية الزرقاء */
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px; 
         }
 
         /* الرأس (Header) */
@@ -69,23 +34,15 @@
             align-items: center; 
         }
 
-        /* تنسيق قسم الاسم والأيقونة في الرأس */
+        /* تنسيق قسم الاسم في الرأس */
         .header-left-content {
             display: flex;
             align-items: center;
             gap: 10px;
-            order: -1;
+            order: -1; 
         }
 
-        /* أيقونة الصورة في الرأس */
-        .profile-icon {
-            width: 50px; 
-            height: 50px;
-            border-radius: 50%; 
-            border: 2px solid #00FFFF;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-            object-fit: cover;
-        }
+        /* تم إزالة تنسيق .profile-icon */
 
         /* تنسيق اسم ELFLSTENY */
         .header-name {
@@ -113,21 +70,21 @@
             font-size: 0.9em;
         }
         
-        /* حاوية المحتوى الرئيسية - **تم زيادة العتامة هنا** */
+        /* حاوية المحتوى الرئيسية */
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
-            /* تم زيادة الشفافية من 0.6 إلى 0.9 */
-            background-color: rgba(0, 0, 0, 0.9); 
+            /* خلفية نصف شفافة للمحتوى فوق الخلفية الزرقاء */
+            background-color: rgba(0, 0, 0, 0.85); 
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
             position: relative;
             z-index: 1;
         }
 
-        /* باقي التنسيقات */
+        /* أقسام المحتوى */
         .section {
             padding: 20px 0;
             border-bottom: 1px dashed #009999;
@@ -141,40 +98,8 @@
             padding-bottom: 5px;
         }
 
-        /* تنسيق قسم الصورة الشخصية (الكبيرة) */
-        .profile-section {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            padding: 30px 0;
-            border-bottom: 2px solid #00FFFF;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .profile-section img {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            border: 5px solid #00FFFF;
-            box-shadow: 0 0 25px #00FFFF;
-            object-fit: cover;
-            /* **تم إضافة عزل هنا لتبدو الصورة فوق الخلفية المعقدة** */
-            position: relative; 
-            z-index: 10; 
-        }
-
-        .profile-section .profile-text {
-            max-width: 60%;
-            text-align: right;
-        }
+        /* تم إزالة تنسيق .profile-section (الصورة الكبيرة) */
         
-        .profile-section h3 {
-            color: #00FFFF;
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
 
         /* قسم الشهادات */
         .certificates-section {
@@ -204,7 +129,7 @@
         }
 
 
-        /* أزرار التواصل الاجتماعي (لم تتغير) */
+        /* أزرار التواصل الاجتماعي */
         .social-buttons {
             text-align: center;
             padding: 20px 0;
@@ -236,7 +161,7 @@
             box-shadow: 0 10px 20px rgba(0, 255, 255, 0.5);
         }
 
-        /* زر البداية (لم يتغير) */
+        /* زر البداية */
         .cta-button {
             text-align: center;
             margin: 40px 0;
@@ -271,24 +196,13 @@
                 padding: 0 0 10px 0;
                 justify-content: center;
             }
-            .profile-section {
-                flex-direction: column;
-                text-align: center;
-            }
-            .profile-section .profile-text {
-                max-width: 90%;
-                text-align: center;
-            }
         }
     </style>
 </head>
 <body>
 
-    <div class="animated-background"></div>
-
     <header>
         <div class="header-left-content">
-            <img src="profile_icon.jpg" alt="صورة أيقونة ELFLSTENY" class="profile-icon">
             <div class="header-name">ELFLSTENY</div>
         </div>
         
@@ -300,19 +214,10 @@
 
     <div class="container">
         
-        <div class="profile-section">
-            <img src="my_profile.jpg" alt="صورة صاحب الموقع">
-            <div class="profile-text">
-                <h3>أهلاً بك في عالمي الرقمي!</h3>
-                <p>مرحباً بكم في موقعي المتخصص في البرمجة والأمان الرقمي. هنا أشارك معكم شغفي بالتقنية وكيف يمكننا استغلالها بذكاء وأمان. أتمنى أن تجدوا في هذا الموقع كل ما هو مفيد ومحفز لرحلتكم في عالم التكنولوجيا.</p>
-                <p>دعونا نستكشف معاً أسرار الأكواد ونبني مستقبلاً رقمياً آمناً ومشرقاً.</p>
-            </div>
-        </div>
-        
         <div class="certificates-section">
             <h2>شهاداتي وخبراتي</h2>
-            <p>شاهد بعضاً من شهاداتي التي تعكس شغفي بالتعلم والتطوير المستمر في مجال البرمجة.</p>
-            <a href="certificate.jpg" target="_blank" class="certificate-button">عرض شهادة ELFLSTENY</a>
+            <p>شاهد شهادتي التي تعكس شغفي بالتعلم والتطوير المستمر في مجال البرمجة.</p>
+            <a href="certificate.jpg" target="_blank" class="certificate-button">عرض شهادة PYTHON</a>
         </div>
         ---
 
